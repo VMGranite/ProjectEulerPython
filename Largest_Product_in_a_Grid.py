@@ -32,19 +32,22 @@ def getSumOfList(list):
         sumTotal += i
     return sumTotal
 
-largestProduct = 0
-
 # check horizontal matches
-for row in grid:
-    for i in range(0, (len(row) - 3)):
-        sumTotal = getSumOfList(row[i: (i + 4)])
-        largestProduct = sumTotal if sumTotal > largestProduct else largestProduct
+def checkHorizontal(grid):
+    largestProduct = 0
+    for row in grid:
+        for i in range(0, (len(row) - 3)):
+            sumTotal = getSumOfList(row[i: (i + 4)])
+            largestProduct = sumTotal if sumTotal > largestProduct else largestProduct
+    print(largestProduct)
 
 # check vertical matches
-for gridLengthIndex in range(0, len(grid)):
-    for gridVerticalIndex in range (i, i + 4):
+def checkVertical(grid):
+    # Steps
 
+
+checkVertical(grid)
 # check forward slash diagonals / 
 # check back slash diagonals \
 
-print(largestProduct)
+
