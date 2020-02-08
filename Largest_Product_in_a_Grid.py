@@ -85,6 +85,7 @@ def checkForwardDiagonals():
 
 # check backward slash diagonals \
 def checkBackwardDiagonals():
+    print("\n-- CHECKING BACKWARD DIAGONAL PRODUCTS --")
 
 # check which product is the greatest 
 def largestProduct():
