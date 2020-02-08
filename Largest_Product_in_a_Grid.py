@@ -26,28 +26,68 @@ grid = [[8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8]
         [20, 73, 35, 29, 78, 31, 90, 1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 5, 54],
         [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]]
 
-def getSumOfList(list):
+def getProductOfList(list):
     sumTotal = 0
-    for i in list:
-        sumTotal += i
+    for i in range(0, len(list)):
+        if i == 0:
+            sumTotal = list[i]
+        else:
+            sumTotal = sumTotal * list[i]
     return sumTotal
 
 # check horizontal matches
 def checkHorizontal(grid):
+    print("\n-- CHECKING HORIZONTAL PRODUCTS --")
     largestProduct = 0
-    for row in grid:
+    rowIndex = 0
+    for row in grid: 
+        print("Row: " + str(rowIndex))
+        rowIndex += 1
         for i in range(0, (len(row) - 3)):
-            sumTotal = getSumOfList(row[i: (i + 4)])
+            print(row[i: (i + 4)])
+            sumTotal = getProductOfList(row[i: (i + 4)])
             largestProduct = sumTotal if sumTotal > largestProduct else largestProduct
-    print(largestProduct)
+    print("The largest product of horizontal groups: " + str(largestProduct))
+    return(largestProduct)
 
 # check vertical matches
 def checkVertical(grid):
-    # Steps
+    print("\n-- CHECKING VERTICAL PRODUCTS --")
+    rowIndex = 0
+    largestProduct = 0
+    sumTotal = 0
+    gridLength = len(grid)
+    # Get All 4 Item Vertical Lists in Column
+    for i in range(0, gridLength):
+        print("Column: " + str(i))
+        rowIndex = 0
+        # stay within bounds to have 4 elements 
+        while rowIndex < (gridLength - 4):
+            # get the desired 4 rows
+            verticalList = []
+            for row in range(rowIndex, (rowIndex + 4)):
+                # get the element in each row for desired vertical list
+                thisRow = grid[row]
+                element = thisRow[i]
+                verticalList.append(element)
+                
+            print(verticalList)
+            sumTotal = getProductOfList(verticalList)
+            largestProduct = sumTotal if sumTotal > largestProduct else largestProduct
+            rowIndex += 1
 
+    print("The largest product of vertical groups: " + str(largestProduct))
+    return(largestProduct)
 
-checkVertical(grid)
 # check forward slash diagonals / 
-# check back slash diagonals \
+def checkForwardDiagonals():
+    print("\n-- CHECKING FORWARD DIAGONAL PRODUCTS --")
 
+# check backward slash diagonals \
+def checkBackwardDiagonals():
 
+# check which product is the greatest 
+def largestProduct():
+    return
+horizontalProduct = checkHorizontal(grid)
+verticalProduct = checkVertical(grid)
