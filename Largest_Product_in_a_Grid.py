@@ -79,9 +79,9 @@ def checkVertical(grid):
     print("The largest product of vertical groups: " + str(largestProduct))
     return(largestProduct)
 
-# check forward slash diagonals / 
-def checkForwardDiagonals(grid):
-    print("\n-- CHECKING FORWARD DIAGONAL PRODUCTS --")
+# check diagonals \
+def checkDiagonal(grid, isForwardDiagonal):
+    print("\n-- CHECKING BACKWARD DIAGONAL PRODUCTS --")
     rowIndex = 0
     largestProduct = 0
     sumTotal = 0
@@ -93,28 +93,35 @@ def checkForwardDiagonals(grid):
         while rowIndex < (gridLength - 3):
             # get the desired 4 rows
             FDList = []
-            itemIndex = 3
+            #Change starting element depending on diagonal orientation
+            if isForwardDiagonal:
+                itemIndex = 3
+            else:
+                itemIndex = 0
             for row in range(rowIndex, (rowIndex + 4)):
                 # get the element in each row for desired Forward Diagonal list
                 thisRow = grid[row]
                 element = thisRow[i+itemIndex]
                 FDList.append(element)
-                itemIndex -= 1
+                #Change element indexing depending on diagonal orientation
+                if isForwardDiagonal:
+                    itemIndex -= 1
+                else:
+                    itemIndex += 1
             print(FDList)
             sumTotal = getProductOfList(FDList)
             largestProduct = sumTotal if sumTotal > largestProduct else largestProduct
             rowIndex += 1
-    print("The largest product of forward diagonal groups: " + str(largestProduct))
+    if isForwardDiagonal:
+        print("The largest product of forward diagonal groups: " + str(largestProduct))
+    else:
+        print("The largest product of backward diagonal groups: " + str(largestProduct))
     return(largestProduct)
-
-
-# check backward slash diagonals \
-def checkBackwardDiagonals(grid):
-    print("\n-- CHECKING BACKWARD DIAGONAL PRODUCTS --")
 
 # check which product is the greatest 
 def largestProduct():
     return
 # horizontalProduct = checkHorizontal(grid)
 # verticalProduct = checkVertical(grid)
-forwardDiagonalProduct = checkForwardDiagonals(grid)
+forwardDiagonalProduct = checkDiagonal(grid, True)
+backwardDiagonalsProduct = checkDiagonal(grid, False)
