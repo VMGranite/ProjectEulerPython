@@ -119,7 +119,7 @@ def checkDiagonal(grid, isForwardDiagonal):
     return(largestProduct)
 
 # check which product is the greatest 
-def largestProduct(horizontal, vertical, forwardDiagonal, backwardDiagonal):
+def getLargestProduct(horizontal, vertical, forwardDiagonal, backwardDiagonal):
     productsList = [horizontal, vertical, forwardDiagonal, backwardDiagonal]
     productsList.sort()
     print("\n--CHECKING LARGET PRODUCT--")
