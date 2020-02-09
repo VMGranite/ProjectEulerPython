@@ -80,15 +80,41 @@ def checkVertical(grid):
     return(largestProduct)
 
 # check forward slash diagonals / 
-def checkForwardDiagonals():
+def checkForwardDiagonals(grid):
     print("\n-- CHECKING FORWARD DIAGONAL PRODUCTS --")
+    rowIndex = 0
+    largestProduct = 0
+    sumTotal = 0
+    gridLength = len(grid)
+    for i in range(0, (gridLength - 3)):
+        print("Diagonal Column: " + str(i))
+        rowIndex = 0
+        # stay within bounds to have 4 elements 
+        while rowIndex < (gridLength - 3):
+            # get the desired 4 rows
+            FDList = []
+            itemIndex = 3
+            for row in range(rowIndex, (rowIndex + 4)):
+                # get the element in each row for desired Forward Diagonal list
+                thisRow = grid[row]
+                element = thisRow[i+itemIndex]
+                FDList.append(element)
+                itemIndex -= 1
+            print(FDList)
+            sumTotal = getProductOfList(FDList)
+            largestProduct = sumTotal if sumTotal > largestProduct else largestProduct
+            rowIndex += 1
+    print("The largest product of forward diagonal groups: " + str(largestProduct))
+    return(largestProduct)
+
 
 # check backward slash diagonals \
-def checkBackwardDiagonals():
+def checkBackwardDiagonals(grid):
     print("\n-- CHECKING BACKWARD DIAGONAL PRODUCTS --")
 
 # check which product is the greatest 
 def largestProduct():
     return
-horizontalProduct = checkHorizontal(grid)
-verticalProduct = checkVertical(grid)
+# horizontalProduct = checkHorizontal(grid)
+# verticalProduct = checkVertical(grid)
+forwardDiagonalProduct = checkForwardDiagonals(grid)
