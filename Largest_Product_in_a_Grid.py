@@ -132,4 +132,4 @@ verticalProduct = checkVertical(grid)
 forwardDiagonalProduct = checkDiagonal(grid, True)
 backwardDiagonalsProduct = checkDiagonal(grid, False)
 
-largestProduct(horizontalProduct, verticalProduct, forwardDiagonalProduct, backwardDiagonalsProduct)
+getLargestProduct(horizontalProduct, verticalProduct, forwardDiagonalProduct, backwardDiagonalsProduct)
