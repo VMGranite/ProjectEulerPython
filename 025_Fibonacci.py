@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # 2/9/2020
 # PROJECT EULER 
-# 1000-digit Fibonacci numberL: What is the index of the first term in the Fibonacci sequence to contain 1000 digits?
+# 1000-digit Fibonacci number: What is the index of the first term in the Fibonacci sequence to contain 1000 digits?
 
 a = 1;
 b = 1;
