@@ -5,7 +5,7 @@
 # https://projecteuler.net/problem=13
 
 sum = 0
-f = '50DNums.txt'
+f = 'txtFiles/50DNums.txt'
 with open(f) as file:
    for line in file:
         sum += int(line)
