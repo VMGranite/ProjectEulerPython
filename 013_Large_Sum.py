@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# 2/13/2020
+# 2/12/2020
 # PROJECT EULER 
 # Large Sum: Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.
 # https://projecteuler.net/problem=13
