@@ -22,17 +22,28 @@ verticalIndexLeft = 0
 verticalIndexRight = width
 
 center = width - int(width / 2)
+numbersToSum = []
 
 #Populate the Spiral Matrix
 while horizontalIndexRight < horizontalIndexLeft:
     # print("Index Right: " + str(horizontalIndexRight))
     # print("Index Left: " + str(horizontalIndexLeft))
     
-    print("- Right -")
+    print("- Left -")
+    topRightFilled = False
     for a in range(horizontalIndexRight, horizontalIndexRight + 1):
         for b in reversed(range(0, width)):
             #print("[" + str(a) + ", " + str(b) + "]")
             if matrix[a][b] == "x":
+                #top corner right number
+                if topRightFilled == False:
+                    topRightFilled = True
+                    numbersToSum.append(number)
+                #top corner left number
+                if (b - 1) == 0 and matrix[a][b-1] == "x":
+                    numbersToSum.append(number-1)
+                elif b != 0 and matrix[a][b-1] != "x":
+                    numbersToSum.append(number)
                 matrix[a][b] = number
                 number -= 1
 
@@ -56,11 +67,24 @@ while horizontalIndexRight < horizontalIndexLeft:
       print(row)
 
     if (horizontalIndexRight+1) != horizontalIndexLeft:
-        print("- Left -")
+        bottomLeftFilled = False
+        print("- Right -")
         for a in range(horizontalIndexLeft - 1, horizontalIndexLeft):
             for b in range(0, width):
                 #print("[" + str(a) + ", " + str(b) + "]")
                 if matrix[a][b] == "x":
+                    #bottom corner left number
+                    print(number)
+                    if bottomLeftFilled == False:
+                        print("^ BOTTOM LEFT")
+                        bottomLeftFilled = True
+                        numbersToSum.append(number)
+
+                    #bottom corner right number
+                    if (b + 1) == width-1 and matrix[a][b+1] == "x":
+                        numbersToSum.append(number+1)
+                    elif b != width-1 and matrix[a][b+1] != "x":
+                        numbersToSum.append(number)
                     matrix[a][b] = number
                     number -= 1
 
@@ -81,5 +105,7 @@ while horizontalIndexRight < horizontalIndexLeft:
     horizontalIndexRight += 1
     horizontalIndexLeft -= 1
 
+print("Numbers to Sum: ")
+print(list(dict.fromkeys(numbersToSum)))
     
 
