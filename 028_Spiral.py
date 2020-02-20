@@ -25,12 +25,12 @@ center = width - int(width / 2)
 
 #Populate the Spiral Matrix
 while horizontalIndexRight < horizontalIndexLeft:
-    print("Index Right: " + str(horizontalIndexRight))
-    print("Index Left: " + str(horizontalIndexLeft))
+    # print("Index Right: " + str(horizontalIndexRight))
+    # print("Index Left: " + str(horizontalIndexLeft))
     
     print("- Right -")
     for a in range(horizontalIndexRight, horizontalIndexRight + 1):
-        for b in range(0, width):
+        for b in reversed(range(0, width)):
             #print("[" + str(a) + ", " + str(b) + "]")
             if matrix[a][b] == "x":
                 matrix[a][b] = number
@@ -41,14 +41,16 @@ while horizontalIndexRight < horizontalIndexLeft:
 
     #Break from spiraling early if the center of the matrix is populated
     if matrix[center][center] != "x":
+        print("- Spiral Matrix Populated -")
         break
  
     print("- Down -")
     for a in range(0, width):
-        if matrix[a][verticalIndexRight-1] == "x":
-            matrix[a][verticalIndexRight-1] = number
+        #print("[" + str(a) + ", " + str(verticalIndexRight-1) + "]")
+        if matrix[a][verticalIndexLeft] == "x":
+            matrix[a][verticalIndexLeft] = number
             number -= 1
-    verticalIndexRight -= 1
+    verticalIndexLeft += 1
 
     for row in matrix:
       print(row)
@@ -56,7 +58,7 @@ while horizontalIndexRight < horizontalIndexLeft:
     if (horizontalIndexRight+1) != horizontalIndexLeft:
         print("- Left -")
         for a in range(horizontalIndexLeft - 1, horizontalIndexLeft):
-            for b in reversed(range(0, width)):
+            for b in range(0, width):
                 #print("[" + str(a) + ", " + str(b) + "]")
                 if matrix[a][b] == "x":
                     matrix[a][b] = number
@@ -67,10 +69,11 @@ while horizontalIndexRight < horizontalIndexLeft:
 
     print("- Up -")
     for a in reversed(range(0, width)):
-        if matrix[a][verticalIndexLeft] == "x":
-            matrix[a][verticalIndexLeft] = number
+        #print("[" + str(a) + ", " + str(verticalIndexLeft) + "]")
+        if matrix[a][verticalIndexRight-1] == "x":
+            matrix[a][verticalIndexRight-1] = number
             number -= 1
-    verticalIndexLeft += 1
+    verticalIndexRight -= 1
 
     for row in matrix:
       print(row)   
