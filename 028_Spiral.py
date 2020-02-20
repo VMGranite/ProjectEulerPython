@@ -59,6 +59,9 @@ while horizontalIndexRight < horizontalIndexLeft:
     for a in range(0, width):
         #print("[" + str(a) + ", " + str(verticalIndexRight-1) + "]")
         if matrix[a][verticalIndexLeft] == "x":
+            #BOTTOM LEFT FIRST
+            #if verticalIndexLeft + 1 != width and matrix[a][verticalIndexLeft + 1] != "x"
+            #BOTTOM LEFT NEXT
             matrix[a][verticalIndexLeft] = number
             number -= 1
     verticalIndexLeft += 1
@@ -73,18 +76,8 @@ while horizontalIndexRight < horizontalIndexLeft:
             for b in range(0, width):
                 #print("[" + str(a) + ", " + str(b) + "]")
                 if matrix[a][b] == "x":
-                    #bottom corner left number
-                    print(number)
-                    if bottomLeftFilled == False:
-                        print("^ BOTTOM LEFT")
-                        bottomLeftFilled = True
-                        numbersToSum.append(number)
-
-                    #bottom corner right number
-                    if (b + 1) == width-1 and matrix[a][b+1] == "x":
-                        numbersToSum.append(number+1)
-                    elif b != width-1 and matrix[a][b+1] != "x":
-                        numbersToSum.append(number)
+                    #BOTTOM RIGHT FIRST
+                    #BOTTOM RIGHT NEXT
                     matrix[a][b] = number
                     number -= 1
 
